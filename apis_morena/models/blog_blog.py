@@ -94,7 +94,7 @@ class Blog_Post(models.Model):
                                 bp['content'] = "<p>" + noti['Descripcion'] + "</p><br><a href='"+ link + "' target='_blank'> Mas Información</a>"
                         else:
                             blogp.create({
-                            "blog_id": 2,
+                            "blog_id": 1,
                             "active": True,
                             "name": noti['Titulo'],
                             "content": "<p>" + noti['Descripcion'] + "</p><br><a href='"+ link + "' target='_blank'> Mas Información</a>",
