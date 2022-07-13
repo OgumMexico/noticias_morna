@@ -11,6 +11,7 @@
     'depends'      : ['base', 'web',"mail", 'website_blog'],
     'data'         : [
         "security/ir.model.access.csv",
+        'data/ir_cron.xml',
         'views/api_wizard.xml',
         'views/blog_blog.xml',
     ],
