@@ -61,10 +61,10 @@ class apiCustom(models.Model):
                 data = json.loads(r.text)
                 if r.status_code == 200:
                     status = data['data']['login']['status']
-                    if str(status) == "true":
-                        token = data['data']['login']['token']
-                        api.token = token
-                        date = fields.Date.context_today(self)
+                    # if str(status) == "true":
+                    token = data['data']['login']['token']
+                    api.token = token
+                    date = fields.Date.context_today(self)
                 status_code = str(r.status_code)
 
 
@@ -100,10 +100,10 @@ class apiCustom(models.Model):
                 data = json.loads(r.text)
                 if r.status_code == 200:
                     status = data['data']['login']['status']
-                    if status:
-                        token = data['data']['login']['token']
-                        api.token = token
-                        date = fields.Date.context_today(self)
+                    # if status:
+                    token = data['data']['login']['token']
+                    api.token = token
+                    date = fields.Date.context_today(self)
 
 
                 return token
