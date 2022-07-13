@@ -68,7 +68,7 @@ class Blog_Post(models.Model):
                         if str(noti['Activo']) == "True":
                             arb = True
                         blog.append({
-                            "blog_id": 2,
+                            "blog_id": 1,
                             "active": True,
                             "name": noti['Titulo'],
                             "content": "<p>" + noti['Descripcion'] + "</p><br><a href='"+ link + "' target='_blank'> Mas Información</a>",
