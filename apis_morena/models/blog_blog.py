@@ -1,4 +1,5 @@
 import json
+from datetime import datetime, timedelta
 from odoo import api, fields, models, tools, _
 from odoo.exceptions import ValidationError
 from odoo.osv import expression
@@ -8,6 +9,7 @@ class Blog_Post(models.Model):
     _inherit = "blog.post"
 
     image_variant = fields.Image("Variant Image")
+    id_noticia = fields.Char(string="Id Noticia")
 
     @api.model
     def write1(self, values):
@@ -15,7 +17,7 @@ class Blog_Post(models.Model):
         # Do your custom logic here
         return super(Blog_Post, self).write(values)
 
-    def get_noticias(self):
+    def get_noticias(self,id_n=1):
         datos = self.env["api.custom"].search([('active', '=', True)])
         for rec in datos:
             token = rec.token
@@ -26,12 +28,12 @@ class Blog_Post(models.Model):
                     noticiasNaiconales
                     {
         
-                        getNoticias
-                        {
+                        getNoticias {
                             status
                             message
-                            noticias
-                            {
+                            noticias{
+                            
+                                Oid
                                 Titulo
                                 Descripcion
                                 FechaPublicacion
@@ -40,7 +42,7 @@ class Blog_Post(models.Model):
                                 UrlLink
                                 Activo
                             }
-                        }
+                      }
                     }"""
             r = requests.post(url=rec.url, json={'query': query}, headers=headers)
             r.encoding = 'utf-8'
@@ -63,17 +65,21 @@ class Blog_Post(models.Model):
                 if datos_rec != None:
                     for noti in datos_rec:
                         url=noti['UrlImagen']
-                        link=noti['UrlLink']
+                        link = ""
+                        if noti['UrlLink']:
+                            if noti['UrlLink'] !="#":
+                                link="<a href='"+ str(noti['UrlLink']) + "' target='_blank'> Mas Información</a>"
                         arb = False
                         if str(noti['Activo']) == "True":
                             arb = True
                         blog.append({
-                            "blog_id": 1,
+                            "blog_id": id_n,
+                            "id_noticia":noti['Oid'],
                             "active": True,
                             "name": noti['Titulo'],
-                            "content": "<p>" + noti['Descripcion'] + "</p><br><a href='"+ link + "' target='_blank'> Mas Información</a>",
+                            "content": "<p>" + noti['Descripcion'] + "</p><br>"+ link,
                             # "is_published": arb,
-                            # "post_date": noti['Titulo'],
+                            "post_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
                             "subtitle": "",
                             "website_meta_description": noti['Descripcion'],
                             "website_meta_keywords": "Morena, Noticias",
@@ -84,22 +90,22 @@ class Blog_Post(models.Model):
                         })
                         bubl = blogp.search([
 
-                            ('name', '=', noti['Titulo']),
-                            ('website_meta_description', '=', noti['Descripcion']),
-                            ('cover_properties', '=', '{"background_color_class": "o_cc3", "background-image": "url('+ url +')", "opacity": "0.2", "resize_class": "o_half_screen_height"}'),
+                            ('id_noticia', '=', noti['Oid']),
+
                         ])
                         if bubl:
                             for bp in bubl:
                                 bp['active'] = arb
-                                bp['content'] = "<p>" + noti['Descripcion'] + "</p><br><a href='"+ link + "' target='_blank'> Mas Información</a>"
+                                bp['content'] = "<p>" + noti['Descripcion'] + "</p><br>"+ link
                         else:
                             blogp.create({
-                            "blog_id": 1,
+                            "blog_id": id_n,
                             "active": True,
+                            "id_noticia": noti['Oid'],
                             "name": noti['Titulo'],
-                            "content": "<p>" + noti['Descripcion'] + "</p><br><a href='"+ link + "' target='_blank'> Mas Información</a>",
+                            "content": "<p>" + noti['Descripcion'] + "</p><br>"+ link,
                             "is_published": arb,
-                            # "post_date": noti['Titulo'],
+                            "post_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
                             "subtitle": "",
                             "website_meta_description": noti['Descripcion'],
                             "website_meta_keywords": "Morena, Noticias",
