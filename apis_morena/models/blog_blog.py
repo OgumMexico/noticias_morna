@@ -32,11 +32,10 @@ class Blog_Post(models.Model):
                             status
                             message
                             noticias{
-                            
+                                FechaPublicacion
                                 Oid
                                 Titulo
                                 Descripcion
-                                FechaPublicacion
                                 Orden
                                 UrlImagen
                                 UrlLink
@@ -63,7 +62,8 @@ class Blog_Post(models.Model):
                     data = json.loads(r.text)
                     datos_rec = data['data']['getNoticias']['noticias']
                 if datos_rec != None:
-                    for noti in datos_rec:
+                    datos_fil = sorted(datos_rec, key=lambda k: k['FechaPublicacion'], reverse=True)
+                    for noti in datos_fil:
                         url=noti['UrlImagen']
                         link = ""
                         if noti['UrlLink']:
@@ -80,6 +80,8 @@ class Blog_Post(models.Model):
                             "content": "<p>" + noti['Descripcion'] + "</p><br>"+ link,
                             # "is_published": arb,
                             "post_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
+                            "write_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
+                            "published_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
                             "subtitle": "",
                             "website_meta_description": noti['Descripcion'],
                             "website_meta_keywords": "Morena, Noticias",
@@ -106,6 +108,8 @@ class Blog_Post(models.Model):
                             "content": "<p>" + noti['Descripcion'] + "</p><br>"+ link,
                             "is_published": arb,
                             "post_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
+                            "write_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
+                            "published_date": datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S"),
                             "subtitle": "",
                             "website_meta_description": noti['Descripcion'],
                             "website_meta_keywords": "Morena, Noticias",
