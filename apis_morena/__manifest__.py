@@ -14,6 +14,12 @@
         'data/ir_cron.xml',
         'views/api_wizard.xml',
         'views/blog_blog.xml',
+        'views/web_regeneracion.xml',
+        'views/web_directorio.xml',
+        'views/web_transparencia.xml',
+        'static/xml/template_regen.xml',
+        'static/xml/template_direct.xml',
+        'static/xml/template_transp.xml',
     ],
     'images': ['static/description/banner.png'],
 

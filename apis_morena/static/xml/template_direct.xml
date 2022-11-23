@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="main_directorio" model="website.menu">
+            <field name="name">Directorio</field>
+            <field name="url">/directorio</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">11</field>
+        </record>
+    </data>
+    <template id="web_directorio_pub" >
+        <t t-call="website.layout">
+            <div id="wrap" class="oe_structure oe_empty">
+              <section class="s_banner pt96 o_colored_level s_parallax_no_overflow_hidden oe_img_bg o_bg_img_center pb208" data-scroll-background-ratio="0" data-snippet="s_banner"
+                       data-name="Banner" style="background-image: url(/apis_morena/static/description/indice_dir.jpg);">
+                <br/>
+                <br/>
+              </section>
+                <section class="s_company_team pt48 pb48 o_colored_level" data-snippet="s_company_team" data-name="Team" style="background-image: none;">
+                    <div class="container">
+                        <div class="row s_nb_column_fixed">
+                        <t t-foreach="row" t-as="cols">
+                            <div class="col-lg-6 pt24 pb24 o_colored_level" style="">
+                              <div class="row s_col_no_resize s_col_no_bgcolor">
+                                <div class="col-lg-4 pb16 o_not_editable">
+                                 <t t-if="cols.perfil">
+                                  <img alt="" t-att-src="cols.perfil" class="img-fluid mx-auto rounded-circle" loading="lazy" data-original-title="" title="" aria-describedby="tooltip679871"
+                                       data-resize-width="690" style="width: 100% !important; transform: scaleX(1.4) scaleY(1.4); animation-play-state: paused; transition: none 0s ease 0s;"/>
+                                 </t>
+                                 <t t-else="">
+                                     <img alt="" src="/apis_morena/static/description/user.png" class="img-fluid mx-auto rounded-circle" loading="lazy" data-original-title="" title="" aria-describedby="tooltip679871"
+                                        data-mimetype="image/png" data-resize-width="690" style="width: 100% !important; transform: scaleX(1.4) scaleY(1.4); animation-play-state: paused; transition: none 0s ease 0s;"/>
+                                  </t>
+                                </div>
+                                <div class="col-lg-8">
+                                  <h4>
+                                      <span style="font-weight: bolder;" t-field="cols.name"/>
+                                    <br/>
+                                  </h4>
+                                    <p><font style="color: rgb(156, 0, 0);"><span style="font-weight: bolder;" t-field="cols.cargo"/></font></p>
+                                  <p t-if="cols.correo">
+                                    <span class="fa fa-envelope-o" data-original-title="" title="" aria-describedby="tooltip211369" style="color: rgb(156, 0, 0) !important;"/>
+                                    <font style="color: rgb(156, 0, 0);"><span t-field="cols.correo"/></font>
+                                  </p>
+                                  <p> <a t-if="cols.face" t-att-href="cols.face" target="_blank"><span class="fa fa-facebook-square fa-2x" data-original-title="" title="" aria-describedby="tooltip391254" style="color: rgb(156, 0, 0) !important;"/></a>&amp;nbsp;
+                                      <a t-if="cols.insta" t-att-href="cols.insta" target="_blank"><span class="fa fa-instagram fa-2x" data-original-title="" title="" aria-describedby="tooltip634859" style="color: rgb(156, 0, 0) !important;"/></a>&amp;nbsp;
+                                      <a t-if="cols.twit" t-att-href="cols.twit" target="_blank"><span class="fa fa-twitter-square fa-2x" data-original-title="" title="" aria-describedby="tooltip419252" style="color: rgb(156, 0, 0) !important;"/></a>
+                                      <br/>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                        </t>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </t>
+    </template>
+</odoo>

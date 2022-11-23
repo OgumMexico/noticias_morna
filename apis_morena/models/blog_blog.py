@@ -97,8 +97,12 @@ class Blog_Post(models.Model):
                         ])
                         if bubl:
                             for bp in bubl:
+                                bp['blog_id'] = id_n
+                                bp['name'] = noti['Titulo']
+                                bp['cover_properties'] = '{"background_color_class": "o_cc3", "background-image": "url('+ url +')", "opacity": "0.2", "resize_class": "o_half_screen_height"}'
                                 bp['active'] = arb
-                                bp['content'] = "<p>" + noti['Descripcion'] + "</p><br>"+ link
+                                bp['is_published'] = arb
+                                bp['content'] = "<p>" + noti['Descripcion'] + "</p><br>" + link
                         else:
                             blogp.create({
                             "blog_id": id_n,

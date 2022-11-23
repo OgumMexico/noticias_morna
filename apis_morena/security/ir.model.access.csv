@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_api_custom,access.api.custom,model_api_custom,base.group_user,1,1,1,1
+access_web_regenracion,access.web.regenracion,model_web_regenracion,base.group_user,1,1,1,1
+access_web_transparencia,access.web.transparencia,model_web_transparencia,base.group_user,1,1,1,1
+access_web_directorio,access.web.directorio,model_web_directorio,base.group_user,1,1,1,1

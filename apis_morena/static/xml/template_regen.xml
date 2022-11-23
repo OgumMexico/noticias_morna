@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="main_regeneracions" model="website.menu">
+            <field name="name">Regeneracion</field>
+            <field name="url">/regeneracion</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence">11</field>
+        </record>
+    </data>
+
+    <template id="web_regeneracion_pub" >
+        <t t-call="website.layout">
+            <style>
+                #regeneracion.card-body {
+                  background-color: #882a2c !important;
+                  color: #FFFFFF;
+                }
+
+                hr.solid {
+                  border-top: 3px solid #FFF;
+                }
+
+                #wrapwrap.o_header_overlay > header:not(.o_header_affixed):not(.o_top_menu_collapse_shown) > .navbar .nav-item > .nav-link, #wrapwrap.o_header_overlay > header:not(.o_header_affixed):not(.o_top_menu_collapse_shown) > .navbar .nav-item > .nav-link:hover {
+                  color: #fff !important;
+                }
+
+            </style>
+            <div id="wrap" class="oe_structure oe_empty">
+
+                <t t-foreach="datas" t-as="ln">
+                          <section class="s_text_block o_colored_level pb0 pt32" data-snippet="s_text_block" data-name="Text" style="background-image: none;">
+                            <div class="s_allow_columns container">
+                              <p>
+                                <font class="bg-black" style="font-weight: bolder; font-size: 24px;">Publicaciones <span t-esc="str(ln)"/> &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</font>
+
+                              </p>
+                            </div>
+                          </section>
+                        <section class="s_three_columns pb32 o_colored_level o_cc o_cc1 pt0" data-vcss="001" data-snippet="s_three_columns"
+                                 t-att-name="'public-' + str(ln)" style="background-image: none;" data-original-title="" title="" aria-describedby="tooltip871504">
+                            <div class="container">
+                              <div class="row d-flex align-items-stretch" data-original-title="" title="" aria-describedby="tooltip682604">
+                                <t t-foreach="row" t-as="cols">
+                                    <t t-if="cols.year == ln">
+                                        <div class="s_col_no_bgcolor pt0 pb24 col-lg-4">
+                                          <div class="card h-100 border bg-o-color-5" style="border-width: 10px !important; border-color: rgb(136, 42, 44) !important;">
+                                            <t t-if="cols.archivo">
+                                                <a t-att-href="cols.archivo" target="_blank">
+                                                  <img class="card-img-top float-left" t-att-src="cols.image" alt="" loading="lazy" data-original-title="" title="" aria-describedby="tooltip974257" style=""/>
+                                                </a>
+                                            </t>
+                                              <t t-else="">
+                                                  <img class="card-img-top float-left" t-att-src="cols.image" alt="" loading="lazy" data-original-title="" title="" aria-describedby="tooltip974257" style=""/>
+                                              </t>
+                                            <div id="regeneracion" class="card-body">
+                                              <hr class="solid"/>
+                                              <h3 class="card-title" style="text-align: center;">
+                                                <span style="border-width: 1px; border-style: solid;" class="btn btn-custom"/>
+                                                  <span style="font-size: 24px;" t-field="cols.name"/>
+
+                                                <br/>
+                                              </h3>
+                                              <p class="card-text o_default_snippet_text">
+                                                <br/>
+                                              </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </t>
+                                </t>
+
+
+                              </div>
+                            </div>
+                          </section>
+                    <br/>
+                </t>
+
+            </div>
+
+
+        </t>
+    </template>
+
+</odoo>

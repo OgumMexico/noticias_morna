@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_web_transparencia_list" model="ir.ui.view">
+            <field name="name">web.transparencia.list</field>
+            <field name="model">web.transparencia</field>
+            <field name="arch" type="xml">
+                <tree string="Regeneracion">
+                    <field name="name"/>
+                    <field name="descripcion" />
+                    <field name="status" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+    <record id="web_transparencia_form" model="ir.ui.view">
+        <field name="name">web.transparencia.form</field>
+        <field name="model">web.transparencia</field>
+        <field name="arch" type="xml">
+          <form>
+            <header>
+            </header>
+            <sheet>
+
+              <group name="General">
+                <group name="izquierda"><!--Group izquierzo-->
+                  <field name="name" />
+                  <field name="Oid"/>
+                  <field name="descripcion"/>
+                  <field name="date"/>
+                </group>
+                <group name="derecha"><!--Group derecho-->
+                    <field name="image" />
+                    <field name="archivo"/>
+                    <field name="orden"/>
+                    <field name="status"/>
+                </group>
+              </group>
+            </sheet>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" widget="mail_followers"/>
+              <!-- <field name="activity_ids" widget="mail_activity"/> -->
+              <field name="message_ids" widget="mail_thread"/>
+            </div>
+          </form>
+        </field>
+      </record>
+
+
+    <record model="ir.actions.act_window" id="action_transparencia">
+        <field name="name">Transparencia</field>
+        <field name="res_model">web.transparencia</field>
+        <field name="view_mode">tree,form</field>
+        <!-- <field name="view_id"  ref="view_tree_Sistemas" /> solo en 13-->
+    </record>
+
+     <menuitem name="Transparencia"
+            id="menu_website_transparencia"
+            sequence="20"
+            parent="website.menu_website_configuration"
+            groups="website.group_website_designer"
+            action="action_transparencia"/>
+</odoo>
