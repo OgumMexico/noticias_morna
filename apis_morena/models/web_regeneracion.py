@@ -83,22 +83,22 @@ class WebRegeneracion(models.Model):
                             for bp in bubl:
                                 # bp['active'] = arb
                                 bp['status'] = arb
-                                bp['name'] = noti['TituloRegeneracion']
-                                bp['descripcion'] = noti['DescripcionRegeneracion']
-                                bp['image'] = noti['UrlimagenRegeneracion']
-                                bp['archivo'] = noti['UrlLinkRegeneracion']
+                                bp['name'] = noti['TituloRegeneracion'] if noti['TituloRegeneracion'] != " " else ""
+                                bp['descripcion'] = noti['DescripcionRegeneracion'] if noti['DescripcionRegeneracion'] != " " else ""
+                                bp['image'] = noti['UrlimagenRegeneracion'] if noti['UrlimagenRegeneracion'] != " " else ""
+                                bp['archivo'] = noti['UrlLinkRegeneracion'] if noti['UrlLinkRegeneracion'] != " " else ""
                                 bp['date'] = date
                                 bp['year'] = date.year
                         else:
 
                             blogp.create({
-                                "name": noti['TituloRegeneracion'],
+                                "name": noti['TituloRegeneracion'] if noti['TituloRegeneracion'] != " " else "",
                                 "Oid": noti['Oid'],
-                                "descripcion": noti['DescripcionRegeneracion'],
-                                "orden": noti['OrdenRegeneracion'],
+                                "descripcion": noti['DescripcionRegeneracion'] if noti['DescripcionRegeneracion'] != " " else "",
+                                "orden": noti['OrdenRegeneracion'] if noti['OrdenRegeneracion'] != " " else "",
                                 # "is_published": arb,
-                                "image": noti['UrlimagenRegeneracion'],
-                                "archivo": noti['UrlLinkRegeneracion'],
+                                "image": noti['UrlimagenRegeneracion'] if noti['UrlimagenRegeneracion'] != " " else "",
+                                "archivo": noti['UrlLinkRegeneracion'] if noti['UrlLinkRegeneracion'] != " " else "",
                                 "date": date,
                                 "year": date.year,
                                 "status": arb,
@@ -119,57 +119,3 @@ class WebRegeneracion(models.Model):
                 }
                 return notification
 
-
-    """ 
-    <section class="s_text_block o_colored_level pb0 pt32" data-snippet="s_text_block" data-name="Text" style="background-image: none;">
-        <div class="s_allow_columns container">
-          <p>
-            <font class="bg-black" style="font-weight: bolder; font-size: 24px;">Publicaciones 2022 &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;</font>
-            <br/>
-          </p>
-        </div>
-      </section>
-      <section class="s_three_columns pb32 o_colored_level o_cc o_cc1 pt0" data-vcss="001" data-snippet="s_three_columns" data-name="Columns" style="background-image: none;" data-original-title="" title="" aria-describedby="tooltip871504">
-        <div class="container">
-          <div class="row d-flex align-items-stretch" data-original-title="" title="" aria-describedby="tooltip682604">
-            <div class="s_col_no_bgcolor pt0 pb24 col-lg-4">
-              <div class="card h-100 border bg-o-color-5" style="border-width: 10px !important; border-color: rgb(136, 42, 44) !important;">
-                <a href="http://34.75.53.151/oaxaca/regeneracion/Regeneracion-Ene-Feb.pdf" target="_blank">
-                  <img class="card-img-top float-left" src="/web/image/1070-ea1bb94f/PORTADA-REGENERACI%C3%93N-1.jpg" alt="" loading="lazy" data-original-title="" title="" aria-describedby="tooltip974257" data-original-id="1070" data-original-src="/web/image/1070-ea1bb94f/PORTADA-REGENERACI%C3%93N-1.jpg" data-mimetype="image/jpeg" style=""/>
-                </a>
-                <div id="regeneracion" class="card-body">
-                  <hr class="solid"/>
-                  <h3 class="card-title" style="text-align: center;">
-                    <span style="border-width: 1px; border-style: solid;" class="btn btn-custom"/>
-                    <span style="font-size: 24px;">Regeneración Enero- Febrero 2022</span>
-                    <br/>
-                  </h3>
-                  <p class="card-text o_default_snippet_text">
-                    <br/>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="s_col_no_bgcolor pt0 pb24 col-lg-4">
-              <div class="card h-100 border bg-o-color-5" style="border-width: 10px !important; border-color: rgb(136, 42, 44) !important;">
-                <a href="http://34.75.53.151/oaxaca/regeneracion/Regeneracion-Mar-Abr.pdf" target="_blank" data-original-title="" title="">
-                  <img class="card-img-top" src="/web/image/1080-92ab5bf5/REGENERACION-01.jpg" alt="" loading="lazy" data-original-title="" title="" aria-describedby="tooltip974257" style="" data-original-id="1078" data-original-src="/web/image/1078-048ac92d/REGENERACION-01.jpg" data-mimetype="image/jpeg" data-resize-width="690"/>
-                </a>
-                <div id="regeneracion" class="card-body">
-                  <hr class="solid"/>
-                  <h3 class="card-title" style="text-align: center;">
-                    <span style="font-size: 24px;">Regeneración Marzo- Abril 2022</span>
-                    <br/>
-                  </h3>
-                  <p class="card-text o_default_snippet_text">
-                    <br/>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    
-    
-    """
