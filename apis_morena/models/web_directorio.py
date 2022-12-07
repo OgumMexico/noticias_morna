@@ -12,8 +12,8 @@ class WebDirectorio(models.Model):
 
     name = fields.Char(string="Nombre Completo", required=True, track_visibility='onchange')
     Oid = fields.Char(string="Oid", required=True, track_visibility='onchange')
-    cargo = fields.Char(string="Cargo", required=True, track_visibility='onchange')
-    titulo = fields.Char(string="Titulo", required=True, track_visibility='onchange')
+    cargo = fields.Char(string="Cargo",  track_visibility='onchange')
+    titulo = fields.Char(string="Titulo", track_visibility='onchange')
     telefono = fields.Char(string="Telefono", track_visibility='onchange')
     correo = fields.Char(string="Correo", track_visibility='onchange')
     perfil = fields.Char(string="Perfil", track_visibility='onchange')

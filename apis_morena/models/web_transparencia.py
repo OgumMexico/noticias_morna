@@ -13,7 +13,7 @@ class WebTransparencia(models.Model):
 
     name = fields.Char(string="titulo", required=True, track_visibility='onchange')
     Oid = fields.Char(string="Oid", required=True, track_visibility='onchange')
-    descripcion = fields.Char(string="Descripcion", required=True, track_visibility='onchange')
+    descripcion = fields.Char(string="Descripcion", track_visibility='onchange')
     orden = fields.Char(string="Orden")
     image = fields.Char(string="Url Imagen")
     archivo = fields.Char(string="Url archivo")
