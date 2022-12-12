@@ -26,5 +26,19 @@
 			</xpath>
 		</field>
 	</record>
+
+		<record id="view_blog_post_list_content" model="ir.ui.view">
+			<field name="inherit_id" ref="website_blog.view_blog_post_list" />
+            <field name="name">blog.post.list</field>
+            <field name="model">blog.post</field>
+            <field name="arch" type="xml">
+                 <field name="write_date" position="before" >
+					<field name="is_published" />
+					<field name="post_date" />
+				</field>
+            </field>
+        </record>
+
+
     </data>
 </odoo>
