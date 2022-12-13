@@ -103,6 +103,17 @@ class Blog_Post(models.Model):
                                 bp['active'] = arb
                                 bp['is_published'] = arb
                                 bp['content'] = "<p>" + noti['Descripcion'] + "</p><br>" + link
+
+
+                                date = datetime.strptime(noti['FechaPublicacion'], "%Y-%m-%d %H:%M:%S")
+
+                                bp['post_date'] = date
+                                bp['write_date'] = date
+                                bp['published_date'] = date
+                               
+                                bp.post_date = date
+                                bp.write_date = date
+                                bp.published_date = date
                         else:
                             blogp.create({
                             "blog_id": id_n,
