@@ -110,7 +110,7 @@ class Blog_Post(models.Model):
                                 bp['post_date'] = date
                                 bp['write_date'] = date
                                 bp['published_date'] = date
-                               
+
                                 bp.post_date = date
                                 bp.write_date = date
                                 bp.published_date = date

@@ -25,7 +25,7 @@ class ModelName(http.Controller):
     @http.route(['/directorio'], type="http", auth="public", website=True)
     def set_directorio(self):
         data = request.env['web.directorio'].sudo().search([("status", "=", True)])
-        datos_filv1 = sorted(data, key=lambda k: k.name)
+        datos_filv1 = sorted(data, key=lambda k: k.cargo)
 
         dat = {
             "row": datos_filv1,
