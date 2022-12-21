@@ -5,9 +5,10 @@
             <field name="name">web.directorio.list</field>
             <field name="model">web.directorio</field>
             <field name="arch" type="xml">
-                <tree string="Regeneracion">
+               <tree string="Regeneracion">
+                    <field name="orden"/>
                     <field name="name"/>
-                    <field name="correo" />
+                    <field name="cargo" />
                     <field name="area" />
                     <field name="status" invisible="1"/>
                 </tree>
